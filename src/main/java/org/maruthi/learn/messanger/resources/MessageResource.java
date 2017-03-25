@@ -40,14 +40,14 @@ public class MessageResource {
 	}
 	
 	@PUT
-	@Path("/messageId")
+	@Path("/{messageId}")
 	public Message updateMessage(@PathParam("messageId") long messageId, Message message){
 		message.setId(messageId);
 		return messageService.updateMessage(message);
 	}
 	
 	@DELETE
-	@Path("/messageId")
+	@Path("/{messageId}")
 	public void deleteMessage(@PathParam("messageId") long messageId){
 		messageService.removeMessage(messageId);
 	}
