@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Message {
 	private long id;
 	private String message;
-	private Date created;
+	private Date createdAt;
 	private String author;
 	Message(){
 		
@@ -17,6 +17,7 @@ public class Message {
 		this.id = id;
 		this.message = message;
 		this.author = author;
+		this.createdAt = new Date();
 	}
 	public long getId() {
 		return id;
@@ -30,11 +31,11 @@ public class Message {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	public Date getCreated() {
-		return created;
+	public Date getCreatedAt() {
+		return createdAt;
 	}
-	public void setCreated(Date created) {
-		this.created = created;
+	public void setCreatedAt(Date created) {
+		this.createdAt = created;
 	}
 	public String getAuthor() {
 		return author;
