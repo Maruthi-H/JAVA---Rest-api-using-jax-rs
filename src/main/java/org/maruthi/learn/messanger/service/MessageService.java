@@ -1,5 +1,6 @@
 package org.maruthi.learn.messanger.service;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
@@ -23,6 +24,24 @@ public class MessageService {
 		message.setId(messages.size() + 1);
 		messages.put(message.getId(), message);
 		return message;
+	}
+	public List<Message> getMessagesForYear(int year){
+		Calendar cal = Calendar.getInstance();
+		List<Message> messagesForYear = new ArrayList<Message>();
+		for(Message message : messages.values()){
+			cal.setTime(message.getCreatedAt());
+			if(cal.get(Calendar.YEAR) == year){
+				messagesForYear.add(message);
+			}
+		}
+		return messagesForYear;	
+	}
+	
+	public List<Message> getMessagesPaginated(int start, int size){
+		if(start + size > messages.size()){
+			return new ArrayList<Message>();
+		}
+		return new ArrayList<Message>(messages.values()).subList(start, start + size);
 	}
 	
 	public Message updateMessage(Message message){
